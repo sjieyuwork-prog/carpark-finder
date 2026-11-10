@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carpark Finder</title>
+<meta name="description" content="Covered carparks near a Singapore postal code, with live lots and walking distance.">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<main class="page">
+  <header class="masthead">
+    <h1>Carpark Finder</h1>
+    <p class="lede">Covered carparks near where you're going, with live lots.</p>
+  </header>
+
+  <form id="search" class="search" novalidate>
+    <label for="postal">Destination postal code</label>
+    <div class="search-row">
+      <input id="postal" name="postal" inputmode="numeric" placeholder="e.g. 520201"
+             autocomplete="postal-code" enterkeyhint="search" required>
+      <button type="submit">Find parking</button>
+    </div>
+  </form>
+
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+  <div id="results"></div>
+
+  <footer class="footer">
+    <p>Covers HDB and URA carparks; mall carparks are coming. Walking distances follow footpaths, so they're longer than a straight line.</p>
+    <p>Contains information from HDB Carpark Information, Carpark Availability and Capacity of URA Parking Places, accessed from
+      <a href="https://data.gov.sg">data.gov.sg</a> and made available under the terms of the
+      <a href="https://data.gov.sg/open-data-licence">Singapore Open Data Licence version 1.0</a>.
+      Addresses from <a href="https://www.onemap.gov.sg">OneMap</a> © Singapore Land Authority.
+      Walking routes by <a href="https://routing.openstreetmap.de">FOSSGIS</a> on
+      <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a> data.</p>
+  </footer>
+</main>
+
+<template id="card-template">
+  <article class="card">
+    <div class="card-top">
+      <span class="badge"></span>
+      <span class="distance"></span>
+    </div>
+    <h2 class="name"></h2>
+    <p class="postal"></p>
+    <p class="lots"></p>
+    <p class="hours"></p>
+    <div class="nav">
+      <a class="btn gmaps" target="_blank" rel="noopener">Google Maps</a>
+      <a class="btn waze" target="_blank" rel="noopener">Waze</a>
+    </div>
+  </article>
+</template>
+</body>
+</html>
